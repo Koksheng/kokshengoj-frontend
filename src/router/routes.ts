@@ -10,6 +10,14 @@ export const routes: Array<RouteRecordRaw> = [
     component: HomeView,
   },
   {
+    path: "/hide",
+    name: "hidden page",
+    component: HomeView,
+    meta: {
+      hideInMenu: true,
+    },
+  },
+  {
     path: "/noAuth",
     name: "no auth",
     component: NoAuthView,
