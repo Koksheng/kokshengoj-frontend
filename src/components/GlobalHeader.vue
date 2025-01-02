@@ -30,17 +30,29 @@
 <script setup lang="ts">
 import { routes } from "../router/routes";
 import { useRoute, useRouter } from "vue-router";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { useStore } from "vuex";
+import checkAccess from "@/access/checkAccess";
+import ACCESS_ENUM from "@/access/accessEnum";
 
 const router = useRouter();
+const store = useStore();
+const loginUser = store.state.user.loginUser;
 
 // 展示在菜单的路由数组
-const visibleRoutes = routes.filter((item, index) => {
-  if (item.meta?.hideInMenu) {
-    return false;
-  }
-  return true;
+const visibleRoutes = computed(() => {
+  return routes.filter((item, index) => {
+    if (item.meta?.hideInMenu) {
+      return false;
+    }
+    // 根据权限过滤菜单
+    if (
+      !checkAccess(store.state.user.loginUser, item?.meta?.access as string)
+    ) {
+      return false;
+    }
+    return true;
+  });
 });
 
 // default Main Page
@@ -51,16 +63,14 @@ router.afterEach((to, from, failure) => {
   selectedKeys.value = [to.path];
 });
 
-const store = useStore();
-
 console.log();
 
-// setTimeout(() => {
-//   store.dispatch("user/getLoginUser", {
-//     userName: "yupi",
-//     role: "admin",
-//   });
-// }, 3000);
+setTimeout(() => {
+  store.dispatch("user/getLoginUser", {
+    userName: "yupi Admin",
+    userRole: ACCESS_ENUM.ADMIN,
+  });
+}, 3000);
 
 const doMenuClick = (key: string) => {
   router.push({
