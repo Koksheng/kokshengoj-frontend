@@ -1,7 +1,8 @@
 <template>
   <div class="home">
     Admin Page
-    <img alt="Vue logo" src="../assets/logo.png" />
+    <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
+    <icon-code-square :style="{ fontSize: '32px' }" />
     <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
   </div>
 </template>

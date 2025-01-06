@@ -12,7 +12,10 @@
           disabled
         >
           <div class="title-bar">
-            <img class="logo" src="../assets/dan1.png" />
+            <!-- <img class="logo" src="../assets/dan1.png" /> -->
+            <icon-code-square
+              :style="{ fontSize: '32px', marginRight: '0px' }"
+            />
             <div class="title">Koksheng OJ</div>
           </div>
         </a-menu-item>

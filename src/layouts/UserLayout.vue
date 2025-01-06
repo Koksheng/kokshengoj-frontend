@@ -3,16 +3,23 @@
     <a-layout style="min-height: 100vh">
       <a-layout-header class="header">
         <a-space>
-          <img src="../assets/logo.png" class="logo" />
-          <div>鱼 OJ</div>
+          <!-- <img
+            src="https://cdn.rafled.com/anime-icons/images/8HKyoeznko3hmMf44IZS7Gz8rgwFKXBq.jpg"
+            class="logo"
+          /> -->
+          <icon-code-square :style="{ fontSize: '32px' }" />
+          <div>Koksheng OJ</div>
         </a-space>
       </a-layout-header>
       <a-layout-content class="content">
         <router-view />
       </a-layout-content>
       <a-layout-footer class="footer">
-        <a href="https://yupi.icu" target="_blank">
-          编程导航知识星球 by 程序员鱼皮
+        <a
+          href="https://github.com/Koksheng/kokshengoj-frontend"
+          target="_blank"
+        >
+          by Koksheng
         </a>
       </a-layout-footer>
     </a-layout>
